@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hey, Chandrani</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #FDF6F0;
+      --rose: #E8B4B8;
+      --mauve: #C47A7A;
+      --charcoal: #2C2C2C;
+      --soft: #9A7070;
+    }
+
+    html, body {
+      min-height: 100vh;
+      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 15% 20%, rgba(232,180,184,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 85% 80%, rgba(196,122,122,0.10) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+    }
+
+    .greeting {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--mauve);
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      text-align: center;
+      opacity: 0;
+      animation: fadeUp 1.2s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    .greeting span {
+      color: var(--charcoal);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    .line {
+      width: 1px;
+      height: 0;
+      background: var(--rose);
+      margin: 36px auto;
+      animation: growLine 1s ease forwards;
+      animation-delay: 1.2s;
+    }
+
+    .messages {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      max-width: 520px;
+      width: 100%;
+    }
+
+    .msg {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 0.9s ease forwards;
+    }
+
+    .msg:nth-child(1) { animation-delay: 1.6s; }
+    .msg:nth-child(2) { animation-delay: 2.6s; }
+    .msg:nth-child(3) { animation-delay: 3.6s; }
+    .msg:nth-child(4) { animation-delay: 4.6s; }
+    .msg:nth-child(5) { animation-delay: 5.6s; }
+
+    .msg-bubble {
+      background: #fff;
+      border: 1px solid rgba(232,180,184,0.5);
+      border-radius: 2px 18px 18px 18px;
+      padding: 18px 22px;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--charcoal);
+      box-shadow: 0 2px 16px rgba(196,122,122,0.07);
+    }
+
+    .msg-bubble em {
+      font-family: 'Cormorant Garant', serif;
+      font-size: 1.1em;
+      font-style: italic;
+      color: var(--soft);
+    }
+
+    .closing {
+      margin-top: 52px;
+      text-align: center;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards;
+      animation-delay: 6.8s;
+    }
+
+    .closing p {
+      font-family: 'Cormorant Garant', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--soft);
+      font-weight: 300;
+    }
+
+    .petal {
+      display: inline-block;
+      font-size: 1.4rem;
+      margin-top: 12px;
+      animation: float 3s ease-in-out infinite;
+      animation-delay: 7.2s;
+      opacity: 0;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes growLine {
+      to { height: 48px; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); opacity: 1; }
+      50%       { transform: translateY(-6px); opacity: 0.85; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.01ms !important; animation-delay: 0.01ms !important; }
+    }
+
+    @media (max-width: 480px) {
+      .msg-bubble { font-size: 0.95rem; padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <h1 class="greeting">Hey, <span>Chandrani</span> ✿</h1>
+
+    <div class="line"></div>
+
+    <div class="messages">
+
+      <div class="msg">
+        <div class="msg-bubble">
+          How have you been lately?
+        </div>
+      </div>
+
+      <div class="msg">
+        <div class="msg-bubble">
+          How's everything going for you these days?
+        </div>
+      </div>
+
+      <div class="msg">
+        <div class="msg-bubble">
+          Has anything interesting — or stressful — happened recently?
+        </div>
+      </div>
+
+      <div class="msg">
+        <div class="msg-bubble">
+          You've seemed a little quiet lately.<br/>
+          <em>Is everything okay?</em>
+        </div>
+      </div>
+
+      <div class="msg">
+        <div class="msg-bubble">
+          If there's anything on your mind, I'm a good listener.<br/>
+          No pressure though — I just wanted you to know I'm here. 🌸
+        </div>
+      </div>
+
+    </div>
+
+    <div class="closing">
+      <p>thinking of you, always.</p>
+      <div class="petal">🌷</div>
+    </div>
+
+  </div>
+</body>
+</html>
